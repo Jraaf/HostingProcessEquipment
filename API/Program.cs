@@ -1,6 +1,7 @@
 using DAL.EF;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+
+DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("InternetSchoolConnection"), b => b.MigrationsAssembly("API"));
+    options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__DBCon") ?? throw new Exception("dbcon not set"), b => b.MigrationsAssembly("API"));
 });
 
 
