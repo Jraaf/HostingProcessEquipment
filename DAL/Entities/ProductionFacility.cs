@@ -8,5 +8,5 @@ namespace DAL.Entities;
 
 public class ProductionFacility : BaseEntity
 {
-
+    public string Area { get; set; }
 }

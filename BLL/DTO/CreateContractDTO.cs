@@ -2,6 +2,7 @@
 
 public class CreateContractDTO
 {
-    public Guid Id { get; set; }
     public string Name { get; set; }
+    public Guid ProductuctionFacilityId { get; set; }
+    public Guid ProcessEquipmentId { get; set; }
 }

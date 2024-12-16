@@ -1,7 +1,9 @@
+using BLL.Mapping;
+using BLL.Services;
 using DAL.EF;
+using DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +15,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__DBCon") ?? throw new Exception("dbcon not set"), b => b.MigrationsAssembly("API"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("API"));
 });
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+builder.Services.AddScoped<IContractRepositry, ContractRepositry>();
+builder.Services.AddScoped<IContractService, ContractService>();
 
 var app = builder.Build();
 

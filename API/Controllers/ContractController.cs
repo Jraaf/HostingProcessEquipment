@@ -1,11 +1,41 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BLL.DTO;
+using BLL.Exceptions;
+using BLL.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ContractController : ControllerBase
+public class ContractController(IContractService _service) : ControllerBase
 {
-   
+    [HttpGet("GetAll")]
+    public async Task<IActionResult> GetAll()
+    {
+        try
+        {
+            return Ok(await _service.GetAllAsync());
+        }
+        catch (NotFoundException e)
+        {
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
+    }
+    [HttpPost("Add")]
+    public async Task<IActionResult> Add(CreateContractDTO dto)
+    {
+        try
+        {
+            return Ok(await _service.AddAsync(dto));
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
+    }
 }
