@@ -15,4 +15,11 @@ public class ContractRepositry : Repo<EquipmentContract, int>, IContractRepositr
     {
         this.context = context;
     }
+    public async new Task<List<EquipmentContract>> GetAllAsync()
+    {
+        return await context.Contracts
+            .Include(c=>c.Facility)
+            .Include(c=>c.Equipment)
+            .ToListAsync();
+    }
 }

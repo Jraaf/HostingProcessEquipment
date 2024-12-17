@@ -11,7 +11,9 @@ public class MappingProfile : Profile
         CreateMap<CreateEquipmentDTO, EquipmentType>();
         CreateMap<EquipmentType, EquipmentDTO>();
 
-        CreateMap<EquipmentContract, ContractDTO>();
+        CreateMap<EquipmentContract, ContractDTO>()
+            .ForMember(dest => dest.FacilityName, opt => opt.MapFrom(src => src.Facility.Name)) 
+            .ForMember(dest => dest.EquipmentTypeName, opt => opt.MapFrom(src => src.Equipment.Name)); 
         CreateMap<CreateContractDTO, EquipmentContract>();
 
         CreateMap<CreateProductionFacilityDTO, Facility>();
