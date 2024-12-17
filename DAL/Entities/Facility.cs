@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities;
 
-public class ProductionFacility : BaseEntity
+public class Facility
 {
+    public int Id { get; set; }
+    public string Name { get; set; }
     public string Area { get; set; }
 }

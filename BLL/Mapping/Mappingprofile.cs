@@ -8,13 +8,13 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<CreateEquipmentDTO, ProcessEquipment>();
-        CreateMap<EquipmentProcessContract, ContractDTO>()
-           .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-           .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ProductionFacility.Name))
-           .ForMember(dest => dest.ProductionFacility, opt => opt.MapFrom(src => src.ProductionFacility))
-           .ForMember(dest => dest.NumberOfEquipment, opt => opt.MapFrom(src => src.Equipments != null ? src.Equipments.Count : 0));
-        CreateMap<CreateContractDTO, EquipmentProcessContract>();
-        CreateMap<ProcessEquipment, EquipmentDTO>();
+        CreateMap<CreateEquipmentDTO, EquipmentType>();
+        CreateMap<EquipmentType, EquipmentDTO>();
+
+        CreateMap<EquipmentContract, ContractDTO>();
+        CreateMap<CreateContractDTO, EquipmentContract>();
+
+        CreateMap<CreateProductionFacilityDTO, Facility>();
+        CreateMap<Facility, ProductionFacilityDTO>();
     }
 }

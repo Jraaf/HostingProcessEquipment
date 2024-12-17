@@ -7,11 +7,11 @@ using DAL.Repositories.Interfaces;
 
 namespace BLL.Services;
 
-public class ContractService :
-    Service<EquipmentContract, ContractDTO, CreateContractDTO>,
-    IContractService
+public class FacilityService :
+    Service<Facility, ProductionFacilityDTO, CreateProductionFacilityDTO>,
+    IFacilityService
 {
-    public ContractService(IMapper _mapper, IContractRepositry _repo)
+    public FacilityService(IFacilityRepository _repo, IMapper _mapper)
         : base(_repo, _mapper)
     {
 

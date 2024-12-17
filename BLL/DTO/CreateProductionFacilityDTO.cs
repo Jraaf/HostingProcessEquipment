@@ -1,8 +1,7 @@
 ﻿namespace BLL.DTO;
 
-public class EquipmentDTO
+public class CreateProductionFacilityDTO
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string Area { get; set; }
 }

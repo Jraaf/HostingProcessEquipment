@@ -2,6 +2,7 @@
 
 public class ProductionFacilityDTO
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
+    public string Area { get; set; }
 }

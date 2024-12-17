@@ -1,11 +1,12 @@
 ﻿using DAL.EF;
 using DAL.Entities;
+using DAL.Repositories.Interfaces;
 using DAL.Repositories.Repo;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories;
 
-public class ContractRepositry : Repo<EquipmentProcessContract, Guid>, IContractRepositry
+public class ContractRepositry : Repo<EquipmentContract, int>, IContractRepositry
 {
     private readonly ApplicationDbContext context;
 
@@ -13,12 +14,5 @@ public class ContractRepositry : Repo<EquipmentProcessContract, Guid>, IContract
         :base(context)
     {
         this.context = context;
-    }
-    public async new Task<List<EquipmentProcessContract>> GetAllAsync()
-    {
-        return await context.Contracts
-            .Include(c=>c.ProductionFacility)
-            .Include(c=>c.Equipments)
-            .ToListAsync();
     }
 }

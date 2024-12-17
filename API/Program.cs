@@ -1,8 +1,10 @@
 using API.Authentication;
 using BLL.Mapping;
 using BLL.Services;
+using BLL.Services.Interfaces;
 using DAL.EF;
 using DAL.Repositories;
+using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -48,9 +50,11 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddScoped<IContractRepositry, ContractRepositry>();
 builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+builder.Services.AddScoped<IFacilityRepository, FacilityRepository>();
 
 builder.Services.AddScoped<IContractService, ContractService>();
 builder.Services.AddScoped<IEquipmentService,EquipmentService>();
+builder.Services.AddScoped<IFacilityService, FacilityService>();
 
 var app = builder.Build();
 

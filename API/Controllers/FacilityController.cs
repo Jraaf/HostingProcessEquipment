@@ -8,8 +8,14 @@ namespace API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ContractController(IContractService _service) : ControllerBase
+public class FacilityController : ControllerBase
 {
+    private readonly IFacilityService _service;
+
+    public FacilityController(IFacilityService service)
+    {
+        _service = service;
+    }
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll()
     {
@@ -27,7 +33,7 @@ public class ContractController(IContractService _service) : ControllerBase
         }
     }
     [HttpPost("Add")]
-    public async Task<IActionResult> Add(CreateContractDTO dto)
+    public async Task<IActionResult> Add(CreateProductionFacilityDTO dto)
     {
         try
         {
