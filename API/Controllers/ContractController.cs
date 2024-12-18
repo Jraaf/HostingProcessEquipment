@@ -1,5 +1,6 @@
 ﻿using BLL.DTO;
 using BLL.Exceptions;
+using BLL.Services;
 using BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,7 @@ namespace API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ContractController(IContractService _service) : ControllerBase
+public class ContractController(IContractService _service, BackgroundTaskProcessor _taskProcessor) : ControllerBase
 {
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll()
@@ -31,13 +32,21 @@ public class ContractController(IContractService _service) : ControllerBase
     {
         try
         {
-            return Ok(await _service.AddAsync(dto));
+            var contract = await _service.AddAsync(dto);
+
+            _taskProcessor.EnqueueTask(async () =>
+            {
+                await Task.Delay(1000); 
+                Console.WriteLine($"Background processing for Contract {contract.Id} completed.");
+            });
+
+            return Ok(contract);
         }
         catch (ContractException e)
         {
             return BadRequest(e.Message);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             return StatusCode(500, e.Message);
         }

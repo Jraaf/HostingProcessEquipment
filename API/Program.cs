@@ -56,6 +56,10 @@ builder.Services.AddScoped<IContractService, ContractService>();
 builder.Services.AddScoped<IEquipmentService,EquipmentService>();
 builder.Services.AddScoped<IFacilityService, FacilityService>();
 
+builder.Services.AddSingleton<BackgroundTaskProcessor>();
+builder.Services.AddHostedService(provider => provider.GetRequiredService<BackgroundTaskProcessor>());
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
