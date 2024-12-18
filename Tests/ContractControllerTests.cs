@@ -7,6 +7,7 @@ using API.Controllers;
 using BLL.DTO;
 using BLL.Exceptions;
 using BLL.Services.Interfaces;
+using BLL.Services;
 
 namespace Tests;
 
@@ -14,14 +15,17 @@ namespace Tests;
 public class ContractControllerTests
 {
     private Mock<IContractService> _serviceMock;
+    private Mock<BackgroundTaskProcessor> _taskProcessorMock;
     private ContractController _controller;
 
     [SetUp]
     public void Setup()
     {
         _serviceMock = new Mock<IContractService>();
-        _controller = new ContractController(_serviceMock.Object);
+        var fakeTaskProcessor = new FakeBackgroundTaskProcessor();
+        _controller = new ContractController(_serviceMock.Object, fakeTaskProcessor);
     }
+
 
     [Test]
     public async Task GetAll_ReturnsOkResult_WithListOfContracts()
