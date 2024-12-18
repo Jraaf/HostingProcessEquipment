@@ -18,7 +18,7 @@ The API uses **API Key authentication**. Include the API key in the `x-api-key` 
 
 ### Example:
 ```
-x-api-key: your-api-key-here
+x-api-key: 2aa2d17b98df455594422c3a88b428ef
 ```
 
 ---
