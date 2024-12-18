@@ -5,7 +5,7 @@ public class ContractDTO
     public int Id { get; set; }
     public int FacilityId { get; set; }
     public int EquipmentId { get; set; }
-    public string FacilityName { get; set; } // Assuming you want to map Facility name
-    public string EquipmentTypeName { get; set; } // Assuming you want to map Equipment name/type
+    public string FacilityName { get; set; } 
+    public string EquipmentTypeName { get; set; } 
     public int EquipmentCount { get; set; }
 }

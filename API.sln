@@ -5,9 +5,11 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{12C6127A-DF14-42C8-807A-73773905F3E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{470397AD-3BD0-45F7-8BEB-5ED3E88A50F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{470397AD-3BD0-45F7-8BEB-5ED3E88A50F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{E60D2E06-2500-4E1C-A3F2-545B27151EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{E60D2E06-2500-4E1C-A3F2-545B27151EF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C42A8A6F-1B1D-40C1-8B4D-6F07251169FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E60D2E06-2500-4E1C-A3F2-545B27151EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E60D2E06-2500-4E1C-A3F2-545B27151EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E60D2E06-2500-4E1C-A3F2-545B27151EF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C42A8A6F-1B1D-40C1-8B4D-6F07251169FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42A8A6F-1B1D-40C1-8B4D-6F07251169FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42A8A6F-1B1D-40C1-8B4D-6F07251169FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42A8A6F-1B1D-40C1-8B4D-6F07251169FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
