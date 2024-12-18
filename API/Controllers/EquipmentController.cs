@@ -33,6 +33,10 @@ public class EquipmentController(IEquipmentService _service) : ControllerBase
         {
             return Ok(await _service.AddAsync(dto));
         }
+        catch (ContractException e)
+        {
+            return BadRequest(e.Message);
+        }
         catch (Exception e)
         {
             return StatusCode(500, e.Message);

@@ -33,7 +33,11 @@ public class ContractController(IContractService _service) : ControllerBase
         {
             return Ok(await _service.AddAsync(dto));
         }
-        catch (Exception e)
+        catch (ContractException e)
+        {
+            return BadRequest(e.Message);
+        }
+        catch(Exception e)
         {
             return StatusCode(500, e.Message);
         }

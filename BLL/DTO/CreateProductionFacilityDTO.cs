@@ -1,7 +1,11 @@
-﻿namespace BLL.DTO;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BLL.DTO;
 
 public class CreateProductionFacilityDTO
 {
+    [Required]
     public string Name { get; set; }
-    public string Area { get; set; }
+    [Required]
+    public double Area { get; set; }
 }
